@@ -7,11 +7,12 @@ Current features:
 - Wickerbottom does not consume fueled durability on owned items while using them.
 - Wickerbottom does not lose armor durability on owned armor while using it.
 - Wickerbottom restores 15 hunger, 15 sanity, and 15 health every 60 seconds.
+- Wickerbottom also gets the base game's life injector max-health penalty recovery every 60 seconds.
 
 This mod is designed to stay focused on Wickerbottom-specific magic and utility upgrades.
 ]]
 author = "ra1nyxin"
-version = "0.1.0"
+version = "0.1.1"
 
 forumthread = ""
 api_version = 10

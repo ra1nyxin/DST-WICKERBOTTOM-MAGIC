@@ -2,6 +2,7 @@ local _G = GLOBAL
 
 local PLAYER_REGEN_INTERVAL = 60
 local PLAYER_REGEN_AMOUNT = 15
+local MAX_HEALING_NORMAL = _G.TUNING.MAX_HEALING_NORMAL
 
 local function IsWickerbottomPlayer(player)
     return player ~= nil
@@ -41,6 +42,10 @@ local function RestoreWickerbottomStats(inst)
 
     if inst.components.sanity ~= nil then
         inst.components.sanity:DoDelta(PLAYER_REGEN_AMOUNT)
+    end
+
+    if MAX_HEALING_NORMAL ~= nil then
+        inst.components.health:DeltaPenalty(MAX_HEALING_NORMAL)
     end
 end
 
