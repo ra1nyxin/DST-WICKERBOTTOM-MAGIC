@@ -25,17 +25,27 @@ local function IsWalterPlayer(player)
         and player.prefab == "walter"
 end
 
-local function GetWickerbottomOwner(inst)
+local function WalterHasMagicBook(player)
+    return IsWalterPlayer(player)
+        and player.components.inventory ~= nil
+        and player.components.inventory:HasItemWithTag("book", 1)
+end
+
+local function IsMagicBoostedPlayer(player)
+    return IsWickerbottomPlayer(player) or WalterHasMagicBook(player)
+end
+
+local function GetMagicBoostedOwner(inst)
     if inst == nil or inst.components.inventoryitem == nil then
         return nil
     end
 
     local owner = inst.components.inventoryitem:GetGrandOwner()
-    return IsWickerbottomPlayer(owner) and owner or nil
+    return IsMagicBoostedPlayer(owner) and owner or nil
 end
 
 local function ShouldPreserveDurability(inst)
-    local owner = GetWickerbottomOwner(inst)
+    local owner = GetMagicBoostedOwner(inst)
     return owner ~= nil and not owner:IsInLimbo()
 end
 
@@ -45,14 +55,8 @@ local function ShouldPreserveWalterBookUses(inst)
         and IsWalterPlayer(inst._dwm_active_reader)
 end
 
-local function WalterHasMagicBook(player)
-    return IsWalterPlayer(player)
-        and player.components.inventory ~= nil
-        and player.components.inventory:HasItemWithTag("book", 1)
-end
-
-local function RestoreWickerbottomStats(inst)
-    if not IsWickerbottomPlayer(inst)
+local function RestoreMagicReaderStats(inst)
+    if not IsMagicBoostedPlayer(inst)
         or inst:IsInLimbo()
         or inst.components.health == nil
         or inst.components.health:IsDead()
@@ -80,7 +84,7 @@ AddPrefabPostInit("wickerbottom", function(inst)
         return
     end
 
-    inst._dwm_regen_task = inst:DoPeriodicTask(PLAYER_REGEN_INTERVAL, RestoreWickerbottomStats, PLAYER_REGEN_INTERVAL)
+    inst._dwm_regen_task = inst:DoPeriodicTask(PLAYER_REGEN_INTERVAL, RestoreMagicReaderStats, PLAYER_REGEN_INTERVAL)
 end)
 
 AddPrefabPostInit("walter", function(inst)
@@ -93,6 +97,8 @@ AddPrefabPostInit("walter", function(inst)
     if inst.components.reader == nil then
         inst:AddComponent("reader")
     end
+
+    inst._dwm_regen_task = inst:DoPeriodicTask(PLAYER_REGEN_INTERVAL, RestoreMagicReaderStats, PLAYER_REGEN_INTERVAL)
 end)
 
 AddComponentPostInit("finiteuses", function(self)

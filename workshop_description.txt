@@ -5,7 +5,6 @@ Enhances Wickerbottom with durability-free item usage and periodic recovery.
 中文
 
 当前功能：
-- 只有服务器里玩 Wickerbottom 的玩家才能享受到这个模组的效果。
 - Wickerbottom 使用自己物品栏或背包中的 `finiteuses` 物品时不会消耗次数。
 - Wickerbottom 使用自己物品栏或背包中的 `fueled` 耐久物品时不会消耗耐久。
 - Wickerbottom 使用自己身上的 `armor` 护甲时不会损失护甲耐久。
@@ -14,6 +13,8 @@ Enhances Wickerbottom with durability-free item usage and periodic recovery.
 - Walter 现在也可以使用 Wickerbottom 的所有魔法类书籍。
 - Walter 读这些魔法书时只会掉读书 san，不会消耗书本次数。
 - 只要 Walter 身上带着任意一本魔法类书籍，他的可靠的弹弓发射时就不会消耗已装填的弹药。
+- 只要 Walter 身上带着任意一本魔法类书籍，他物品栏、装备栏、背包中的各种有耐久、次数、持续消耗限制的物品也都不会被消耗。
+- 只要 Walter 身上带着任意一本魔法类书籍，他也会获得和 Wickerbottom 一样的每 60 秒回复 15 点饥饿、15 点理智、15 点生命，以及恢复最大生命惩罚的效果。
 
 目前覆盖的耐久类型：
 - `finiteuses` 使用次数类物品
@@ -22,13 +23,12 @@ Enhances Wickerbottom with durability-free item usage and periodic recovery.
 
 补充说明：
 - 这里做的是不消耗，不是循环回满耐久。
-- 只有 Wickerbottom 角色本人使用时才会生效。
+- Walter 这部分效果需要身上至少带着一本魔法类书籍才会生效。
 - 当前版本没有做外部配置文件开关。
 
 English
 
 Current features:
-- Only players using Wickerbottom receive this mod's benefits.
 - Wickerbottom does not consume `finiteuses` durability while using owned inventory or backpack items.
 - Wickerbottom does not consume `fueled` durability while using owned inventory or backpack items.
 - Wickerbottom does not lose `armor` durability while using equipped armor.
@@ -37,6 +37,8 @@ Current features:
 - Walter can now use all of Wickerbottom's magic books.
 - Walter only pays the sanity cost when reading them, while the books do not lose uses.
 - As long as Walter is carrying any magic book, his Trusty Slingshot does not consume loaded ammo when firing.
+- As long as Walter is carrying any magic book, his inventory items, equipped items, and backpack items also stop consuming uses, fueled durability, and armor durability.
+- As long as Walter is carrying any magic book, he also gains the same 60-second 15 hunger, 15 sanity, 15 health recovery loop and max-health penalty recovery as Wickerbottom.
 
 Covered durability types:
 - `finiteuses` use-count items
@@ -45,5 +47,5 @@ Covered durability types:
 
 Notes:
 - This is no-consumption behavior, not a loop that refills items to full durability.
-- The effect only applies while the item is being used by Wickerbottom.
+- Walter's extra effects only apply while he is carrying at least one magic book.
 - There are no external configuration options in this version.
