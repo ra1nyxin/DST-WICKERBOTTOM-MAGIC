@@ -11,6 +11,9 @@ Enhances Wickerbottom with durability-free item usage and periodic recovery.
 - Wickerbottom 使用自己身上的 `armor` 护甲时不会损失护甲耐久。
 - Wickerbottom 每 60 秒回复 15 点饥饿、15 点理智、15 点生命。
 - Wickerbottom 每 60 秒还会额外获得一次原版强心针的最大生命惩罚恢复效果。
+- Walter 现在也可以使用 Wickerbottom 的所有魔法类书籍。
+- Walter 读这些魔法书时只会掉读书 san，不会消耗书本次数。
+- 只要 Walter 身上带着任意一本魔法类书籍，他的可靠的弹弓发射时就不会消耗已装填的弹药。
 
 目前覆盖的耐久类型：
 - `finiteuses` 使用次数类物品
@@ -31,6 +34,9 @@ Current features:
 - Wickerbottom does not lose `armor` durability while using equipped armor.
 - Wickerbottom restores 15 hunger, 15 sanity, and 15 health every 60 seconds.
 - Wickerbottom also receives the base game's life injector max-health penalty recovery every 60 seconds.
+- Walter can now use all of Wickerbottom's magic books.
+- Walter only pays the sanity cost when reading them, while the books do not lose uses.
+- As long as Walter is carrying any magic book, his Trusty Slingshot does not consume loaded ammo when firing.
 
 Covered durability types:
 - `finiteuses` use-count items
